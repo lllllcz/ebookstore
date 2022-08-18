@@ -1,0 +1,143 @@
+.MyHeader {
+    /*上，右，下，左*/
+    padding: 5px 0 10px 0;
+    background-color: #51a8fd;
+}
+
+.Container {
+    width: 70%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.LeftHeader {
+    float: left;
+    margin-top: 5px;
+}
+
+.LeftHeader ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.LeftHeader ul li a {
+    color: white;
+    font-size: 18px;
+}
+
+.RightHeader {
+    float: right;
+    margin-top: 5px;
+}
+
+.RightHeaderItem {
+    float: right;
+    margin: 0 2em;
+}
+
+.RightHeaderItem img {
+    float: left;
+}
+
+.RightHeaderItem p {
+    margin-left: 8px;
+    float: left;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 0.25em;
+    font-weight: 500;
+}
+
+.Banner {
+    padding-top: 25px;
+    background-color: rgba(245, 250, 255, 0.4);
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+.navbar-title {
+    width: fit-content;
+    float: left;
+}
+
+.navbar-title h1 a {
+    color: black;
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-family: 黑体, serif;
+}
+
+.navbar-title > h1 > a > p {
+    padding-top: 0;
+    display: inline-block;
+    color: black;
+    font-size: 45px;
+    letter-spacing: 5px;
+    font-family: Cambria, serif;
+}
+
+.navbar-title a span {
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    color: #ff0000;
+    border: 4px solid #c00202;
+    font-size: 44px;
+    width: 76px;
+
+    border-radius: 50%;
+    display: block;
+    float: left;
+    padding: 2px 0 0 4px;
+    margin-right: 0.4em;
+}
+
+.navbar-options ul {
+    margin: 6px 30px;
+    float: right;
+}
+
+.navbar-options ul li {
+    background-color: #d9edff;
+    float: left;
+    position: relative;
+    display: block;
+    margin: 5px 5px;
+    color: #000;
+    padding: 12px 20px;
+    border: 1px solid #816263;
+    border-radius: 5px;
+
+    font-weight: 1000;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.navbar-options a {
+    font-family: Calibri, serif;
+}
+
+.search-sales {
+    margin: 15px;
+}
+
+.clearfix:before, .clearfix:after,
+.Container:before, .Container:after,
+.navbar:before, .navbar:after,
+.navbar-title:before, .navbar-title:after,
+.navbar-options:before, .navbar-options:after,
+.nav-tabs:before, .nav-tabs:after{
+    display: table;
+    content: " ";
+}
+
+.clearfix:after, .Container:after,
+.navbar:after, .navbar-title:after, .navbar-options:after,
+.nav-tabs:after{
+    clear: both;
+}

@@ -1,0 +1,122 @@
+.Login * {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+button, input, select {
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.Login {
+    padding: 40px 40px;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 1000;
+    color: #3b3663;
+    margin-bottom: 40px;
+    letter-spacing: 0.15em;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 35px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #3b3663;
+}
+
+.container {
+    max-width: 890px;
+    padding: 40px 56px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    padding: 0px 0px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.input-group input[type="text"], input[type="email"], input[type="Password"]  {
+    font-size: 17px;
+    font-weight: 500;
+    color: #999;
+    text-align: left;
+    padding: 14px 15px 12px 35px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: transparent;
+    letter-spacing: 1px;
+}
+
+.btn:active {
+    outline: none;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #9146ff;
+    margin-top: 30px;
+    outline: none;
+    width: 100%;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    text-transform: capitalize;
+}
+
+
+.btn:hover {
+    background-color: #7d32eb;
+    color: #fff;
+}
+
+button, .btn, select {
+    cursor: pointer;
+}
+
+a.forgot {
+    color: #3b3663;
+    margin-top: 2px;
+    text-decoration: none;
+}
+
+a.forgot:hover {
+    text-decoration: none;
+}
+
+p.account,
+p.account a {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-size: 16px;
+    color: #888;
+}
+
+p.account a {
+    color: #9146ff;
+}
+
+p.account a:hover {
+    text-decoration: underline;
+}

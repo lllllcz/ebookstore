@@ -1,0 +1,99 @@
+.ToolBar {
+    background-color: white;
+    padding: 35px 0;
+    opacity: 0.8;
+}
+
+.SearchBar h6 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #000;
+    float: left;
+    margin-right: 5%;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    padding: 0;
+}
+
+.SearchBar input[type="text"] {
+    width: 48%;
+    color: #C3C3C3;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 15px;
+    padding: 10px 10px;
+    border: 1px solid #E4E4E4;
+    outline: none;
+    text-align: left;
+}
+
+.SearchBar input[type="submit"] {
+    outline: none;
+    cursor: pointer;
+    width: 22%;
+    padding: 6px 0 10px;
+    background: #64bfff;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 400;
+    margin: 0 0 0 -3px;
+    border: none;
+}
+
+.ShelfName {
+    text-align: center;
+    padding: 50px 0;
+    text-space: 5px;
+}
+
+.ShelfLevel {
+    background-color: white;
+    height: 400px;
+    width: 100%;
+    margin: 1em 0;
+    border-radius: 10px;
+}
+
+.BookItem {
+    background-color: white;
+    height: 80%;
+    width: 20%;
+    float: left;
+    margin: 25px 2.5%;
+    box-shadow: 5px 10px 10px 0 #c8c8c8;
+    position: relative;
+    text-align: center;
+}
+
+.BookItem a:link {
+    color: black;
+}
+
+.BookItem-pictures {
+    width: 90%;
+    height: 70%;
+    margin: 10px 5%;
+}
+
+.BookItem-name {
+    margin: 0.25em 0.5em;
+    font-size: 16px;
+    font-family: 宋体, serif;
+}
+
+.BookItem-price {
+    position: absolute;
+    bottom: 0;
+    color: red;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-weight: 1000;
+}
+
+.BookItem-storge {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
