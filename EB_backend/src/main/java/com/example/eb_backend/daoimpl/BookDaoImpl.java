@@ -6,6 +6,8 @@ import com.example.eb_backend.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class BookDaoImpl implements BookDao {
 
@@ -15,5 +17,10 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book getBook(int bookId) {
         return bookRepository.findByBookId(bookId);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
