@@ -1,5 +1,4 @@
 import {useSearchParams} from "react-router-dom";
-import * as bookService from "../services/bookService";
 import Toolbar from "../components/toolbar";
 import {Layout} from "antd";
 import BookDetail from "../components/bookDetail";

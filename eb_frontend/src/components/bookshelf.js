@@ -16,9 +16,10 @@ class Bookshelf extends React.Component {
       this.setState({
         books : data,
       })
-    }
+    };
     bookService.getAllBooks(callback);
   }
+
 
   render() {
     const books = this.state.books;

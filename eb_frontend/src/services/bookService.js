@@ -1,9 +1,8 @@
-import {getRequest, postRequest} from "../utils/ajax";
+import {getRequest} from "../utils/ajax";
 
 export const getBook = (id, callback) => {
-  const data = {bookId: id};
-  const url = `http://localhost:8080/getBook`;
-  postRequest(url, data, callback);
+  const url = `http://localhost:8080/getBook?bookId=`+id;
+  getRequest(url, callback);
 };
 
 export const getAllBooks = (callback) => {

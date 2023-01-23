@@ -1,14 +1,11 @@
 let postRequest = (url, data, callback) => {
-  let formData = new FormData();
-
-  for (let p in data){
-    if(data.hasOwnProperty(p))
-      formData.append(p, data[p]);
-  }
 
   let opts = {
     method: "POST",
-    body: formData,
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    },
     credentials: "include"
   };
 
