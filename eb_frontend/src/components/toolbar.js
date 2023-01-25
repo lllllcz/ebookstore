@@ -16,7 +16,7 @@ function Toolbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     const callback = (data) => {
-      if(data.status < 0) {
+      if(data.state < 0) {
         message.success(data.msg);
         localStorage.removeItem("user");
         navigate("/");
@@ -40,7 +40,7 @@ function Toolbar() {
     },
     {
       key: '2',
-      label: (<Link to="/" style={linkStyle} ><UserAddOutlined /> 注册</Link>)
+      label: (<Link to="/signup" style={linkStyle} ><UserAddOutlined /> 注册</Link>)
     }
   ];
   const items2 = [
@@ -54,14 +54,14 @@ function Toolbar() {
     },
     {
       key: '2',
-      label: (<Link to="/" style={linkStyle} ><DollarCircleOutlined /> 购物车</Link>)
+      label: (<Link to="/cart" style={linkStyle} ><DollarCircleOutlined /> 购物车</Link>)
     },
     {
       key: '3',
-      label: (<Link to="/" style={linkStyle} ><WalletOutlined /> 我的订单</Link>)
+      label: (<Link to="/orders" style={linkStyle} ><WalletOutlined /> 我的订单</Link>)
     },
   ];
-  const auth = localStorage.getItem("user");
+  const auth = eval('(' + localStorage.getItem("user") + ')');
   const items = (auth == null) ? (items1) : (items2);
 
   return(

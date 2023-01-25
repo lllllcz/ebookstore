@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router";
 import {Card} from "antd";
+import priceFormat from "../utils/priceFormat";
 const { Meta } = Card;
 
 function BookCard(props) {
@@ -8,7 +9,7 @@ function BookCard(props) {
   let element = <p>empty</p>;
   if (book != null) {
     id = book.bookId;
-    element = <Meta title={book.bookName} description={book.bookDescription} />
+    element = <Meta title={book.bookName} description={"￥ "+priceFormat(book.bookPrice)} />
   }
 
   const Navigate = useNavigate()

@@ -4,4 +4,6 @@ import com.example.eb_backend.entity.User;
 
 public interface UserDao {
     User getUser(String username);
+
+    void setUser(User user);
 }

@@ -1,9 +1,11 @@
 import React from "react";
-import {Anchor, Breadcrumb, Button, Col, Divider, Image, InputNumber, Layout, Row} from "antd";
+import {Anchor, Breadcrumb, Button, Col, Divider, Image, InputNumber, Layout, message, Row} from "antd";
 import * as bookService from "../services/bookService"
 import {BookOutlined, CheckCircleOutlined, HomeOutlined, PayCircleFilled} from "@ant-design/icons";
 import priceFormat from "../utils/priceFormat";
 import {fallbackImage} from "../assets/fallbackImage";
+
+import * as orderService from "../services/orderService"
 
 const { Content } = Layout;
 
@@ -52,6 +54,7 @@ class BookDetail extends React.Component {
     super(props);
     this.state = {
       book : {},
+      num : 1,
     }
   }
 
@@ -64,22 +67,45 @@ class BookDetail extends React.Component {
     bookService.getBook(this.props.id, callback);
   }
 
+  handleNumChange = (val) => {
+    // console.log(val);
+    this.setState({
+      num : val,
+    })
+  }
+
+  addCart = () => {
+    const bid = this.state.book.bookId;
+    // eslint-disable-next-line
+    const user = eval('(' + localStorage.getItem("user") + ')');
+    const callback = (data) => {
+      console.log(data);
+      message.success(data.msg);
+    }
+    orderService.setBookToCart(user.userId, bid, callback);
+  }
+
+  addOneBookOrder = () => {
+    const bid = this.state.book.bookId;
+    // eslint-disable-next-line
+    const user = eval('(' + localStorage.getItem("user") + ')');
+    const callback = (data) => {
+      console.log(data);
+      message.success(data.msg);
+    }
+    orderService.setBookToOrder(user.userId, bid, this.state.num, callback);
+  }
+
   render() {
     const book = this.state.book;
     return(
-      <Content style={{padding: '0 150px',}}>
-        <Breadcrumb style={{margin: '16px 0',}}>
+      <Content className="l-content" >
+        <Breadcrumb className="l-breadcrumb" >
           <Breadcrumb.Item><HomeOutlined /> Home</Breadcrumb.Item>
           <Breadcrumb.Item><BookOutlined /> Book</Breadcrumb.Item>
           <Breadcrumb.Item>{book.bookName}</Breadcrumb.Item>
         </Breadcrumb>
-        <div
-          style={{
-            padding: '40px 150px',
-            minHeight: 360,
-            backgroundColor:'white',
-          }}
-        >
+        <div>
           <Row>
             <Col
               span={22}
@@ -88,8 +114,8 @@ class BookDetail extends React.Component {
               <Row id="part-1">
                 <Col span={12} style={{paddingRight:100}}>
                   <Image
-                    // src="D:\codes\IdeaProjects\ebook_front\src\assets\1.jpg"
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="../../../../IdeaProjects/ebook_front/src/assets/1.jpg"
+                    // src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     fallback={fallbackImage}
                   />
                 </Col>
@@ -106,13 +132,14 @@ class BookDetail extends React.Component {
                       type="dashed"
                       shape="round"
                       size="large"
+                      onClick={this.addCart}
                     >
                       加入购物车
                     </Button>
                   </div>
                   <Row>
                     <Col span={12} style={{fontFamily:"黑体", paddingLeft:50,}}>
-                      购买数量：<InputNumber min={1} max={10} defaultValue={1} />
+                      购买数量：<InputNumber min={1} max={10} defaultValue={1} onChange={this.handleNumChange} />
                     </Col>
                     <Col span={12}>
                       <Button
@@ -120,6 +147,7 @@ class BookDetail extends React.Component {
                         icon={<CheckCircleOutlined />}
                         size="large"
                         style={{fontFamily:"幼圆"}}
+                        onClick={this.addOneBookOrder}
                       >
                         立即购买
                       </Button>

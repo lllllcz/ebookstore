@@ -1,12 +1,10 @@
-import {Button, Divider, Form, Input, message} from "antd";
-import {Link} from "react-router-dom";
-import {QuestionCircleTwoTone, UserOutlined} from "@ant-design/icons";
-import {useNavigate} from "react-router";
-
 import * as userService from "../services/userService"
 import "../css/login.css"
+import {useNavigate} from "react-router";
+import {Button, Form, Input, message} from "antd";
+import {UserAddOutlined} from "@ant-design/icons";
 
-function LoginView() {
+function SignupView() {
 
   const navigate = useNavigate();
   const onFinish = value => {
@@ -15,32 +13,30 @@ function LoginView() {
       console.log(data);
       if(data.state >= 0) {
         message.success(data.msg);
-        localStorage.setItem('user', JSON.stringify(data.data));
-        navigate("/");
+        navigate("/login");
         window.location.reload();
       }
       else{
         message.error(data.msg);
       }
     }
-    userService.login(value, callback);
+    userService.signup(value, callback);
   }
 
   return (
     <div className="Login">
-      <h1>Welcome!</h1>
+      <h1>Hello, New Friend!</h1>
       <div className="form-container">
 
-        <h2><UserOutlined /> Login</h2>
+        <h2><UserAddOutlined /> Sign Up</h2>
 
         <Form
           name="basic"
           labelCol={{span: 8,}}
           wrapperCol={{span: 16,}}
           style={{maxWidth: 600,}}
-          // initialValues={{remember: true,}}
+          initialValues={{remember: true,}}
           onFinish={onFinish}
-          // onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <Form.Item
@@ -65,20 +61,33 @@ function LoginView() {
                 message: 'Please input your password!',
               },
             ]}
+            hasFeedback
           >
             <Input.Password/>
           </Form.Item>
 
-          {/*<Form.Item*/}
-          {/*  name="remember"*/}
-          {/*  valuePropName="checked"*/}
-          {/*  wrapperCol={{*/}
-          {/*    offset: 8,*/}
-          {/*    span: 16,*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  <Checkbox>Remember me</Checkbox>*/}
-          {/*</Form.Item>*/}
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm your password!',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                },
+              }),
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
 
           <Form.Item
             wrapperCol={{
@@ -91,11 +100,6 @@ function LoginView() {
             </Button>
           </Form.Item>
         </Form>
-        <Divider />
-        <div style={{textAlign:'right'}}>
-          <p style={{color:'rgba(0,0,0,0.6)', fontSize:13,}} ><QuestionCircleTwoTone /> Don't have an account?</p>
-          <Button><Link to="/signup">Sign up</Link></Button>
-        </div>
 
       </div>
     </div>
@@ -103,4 +107,4 @@ function LoginView() {
 
 }
 
-export default LoginView;
+export default SignupView;

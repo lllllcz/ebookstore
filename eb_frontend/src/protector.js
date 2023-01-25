@@ -5,6 +5,9 @@ import LoginView from "./views/login";
 import BookView from "./views/book";
 import MainView from "./views/main";
 import NotFound from "./views/notFound";
+import CartView from "./views/cart";
+import SignupView from "./views/signup";
+import OrdersView from "./views/orders";
 
 class Protector extends React.Component {
   constructor(props) {
@@ -17,7 +20,7 @@ class Protector extends React.Component {
 
   checkAuth = (data) => {
     console.log(data);
-    if (data.status >= 0) {
+    if (data.state >= 0) {
       this.setState({
         isAuthed: true,
         hasAuthed: true,
@@ -38,6 +41,8 @@ class Protector extends React.Component {
 
     const ele1 = (
       <Routes>
+        <Route path="/orders" element={<OrdersView />} />
+        <Route path="/cart" element={<CartView />} />
         <Route path="/book" element={<BookView />} />
         <Route path="/" element={<MainView />} />
         <Route path="/*" element={<NotFound />} />
@@ -45,6 +50,7 @@ class Protector extends React.Component {
     );
     const ele2 = (
       <Routes>
+        <Route path="/signup" element={<SignupView />} />
         <Route path="/login" element={<LoginView />} />
         <Route path="/" element={<MainView />} />
         <Route path="/*" element={<NotFound />} />
@@ -52,6 +58,7 @@ class Protector extends React.Component {
     );
     return(
       (this.state.isAuthed) ? (ele1) : (ele2)
+      // ele1
     );
   }
 

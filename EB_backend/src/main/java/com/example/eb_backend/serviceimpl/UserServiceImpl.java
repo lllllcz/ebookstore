@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.eb_backend.dao.UserDao;
 import com.example.eb_backend.entity.User;
 import com.example.eb_backend.service.UserService;
+import com.example.eb_backend.utils.MessageUtil;
 import com.example.eb_backend.utils.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,23 +20,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(String username, String password) {
         User user = userDao.getUser(username);
-//        System.out.println(user);
 
-        JSONObject auth = new JSONObject();
         if (user == null) {
-            auth.put("status", -1);
-            auth.put("msg", "没有这个用户");
-            auth.put("data", null);
-            return auth.toJSONString();
+            return MessageUtil.message(-1, "没有这个用户", null);
         }
         if (Objects.equals(user.getUserPassword(), password)) {
-
-//            if (user.getUserType() == 2) {
-//                auth.put("status", -1);
-//                auth.put("msg", "登录失败，您已被禁止登录");
-//                auth.put("data", null);
-//                return auth;
-//            }
 
             JSONObject obj = new JSONObject();
             obj.put("userId", user.getUserId());
@@ -43,49 +32,43 @@ public class UserServiceImpl implements UserService {
             obj.put("userType", user.getUserType());
             SessionUtil.setSession(obj);
 
-            auth.put("status", 0);
-            auth.put("msg", "登录成功");
-            auth.put("data", obj);
-
+            return MessageUtil.message(0, "登录成功", obj);
         }
         else {
-            auth.put("status", -1);
-            auth.put("msg", "登录失败");
-            auth.put("data", null);
+            return MessageUtil.message(-1, "登录失败", null);
         }
-        return auth.toJSONString();
     }
 
     @Override
     public String checkSession() {
         JSONObject auth = SessionUtil.getAuth();
 
-        JSONObject check = new JSONObject();
-
         if (auth == null) {
-            check.put("status", -1);
-            check.put("msg", "Check session error");
-            check.put("data", null);
+            return MessageUtil.message(-1, "Check session error", null);
         }
         else {
-            check.put("status", 0);
-            check.put("msg", "Check session ok");
-            check.put("data", auth);
+            return MessageUtil.message(0, "Check session ok", auth);
         }
 
-        return check.toJSONString();
     }
 
     @Override
     public String logout() {
         SessionUtil.removeSession();
+        return MessageUtil.message(-1, "Logout succeed", null);
+    }
 
-        JSONObject check = new JSONObject();
-
-        check.put("status", -1);
-        check.put("msg", "Logout succeed");
-        check.put("data", null);
-
-        return check.toJSONString();
+    @Override
+    public String signup(String username, String password) {
+        User user = userDao.getUser(username);
+        if (user != null) {
+            return MessageUtil.message(-1, "用户名重复", null);
+        }
+        user = new User();
+        user.setUserName(username);
+        user.setUserPassword(password);
+        user.setUserType(1);
+        userDao.setUser(user);
+        return MessageUtil.message(0, "Sign up succeed", null);
     }
 }

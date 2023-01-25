@@ -1,11 +1,12 @@
 import {getRequest} from "../utils/ajax";
+import {backendURL} from "../assets/backendURL";
 
 export const getBook = (id, callback) => {
-  const url = `http://localhost:8080/getBook?bookId=`+id;
+  const url = backendURL + `/getBook?bookId=`+id;
   getRequest(url, callback);
 };
 
 export const getAllBooks = (callback) => {
-  const url = `http://localhost:8080/getAllBooks`;
+  const url = backendURL + `/getAllBooks`;
   getRequest(url, callback);
 };

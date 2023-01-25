@@ -1,22 +1,21 @@
-import {Breadcrumb, Layout} from 'antd';
 import Toolbar from "../components/toolbar";
-import Bookshelf from "../components/bookshelf";
-import {HomeOutlined} from "@ant-design/icons";
+import {Breadcrumb, Layout} from "antd";
+import {DollarCircleOutlined, HomeOutlined} from "@ant-design/icons";
+import {Content, Footer} from "antd/es/layout/layout";
+import CartInfo from "../components/cartInfo";
 
-const { Content, Footer } = Layout;
-
-function MainView() {
-
-  return (
+function CartView() {
+  return(
     <Layout>
       <Toolbar />
 
       <Content className="l-content" >
         <Breadcrumb className="l-breadcrumb" >
           <Breadcrumb.Item><HomeOutlined /> Home</Breadcrumb.Item>
+          <Breadcrumb.Item><DollarCircleOutlined /> Cart</Breadcrumb.Item>
         </Breadcrumb>
-        <div style={{padding:36}} >
-          <Bookshelf />
+        <div>
+          <CartInfo />
         </div>
       </Content>
 
@@ -26,4 +25,4 @@ function MainView() {
     </Layout>
   );
 }
-export default MainView;
+export default CartView;

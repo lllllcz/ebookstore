@@ -1,0 +1,13 @@
+.l-content {
+    padding: 0 150px;
+}
+
+.l-breadcrumb {
+    margin: 16px 0;
+}
+
+.l-content > div {
+    padding: 120px;
+    min-height: 360px;
+    background-color: white;
+}

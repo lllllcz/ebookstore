@@ -6,4 +6,6 @@ public interface UserService {
     String checkSession();
 
     String logout();
+
+    String signup(String username, String password);
 }

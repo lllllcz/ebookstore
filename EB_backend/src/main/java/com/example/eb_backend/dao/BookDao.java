@@ -10,4 +10,5 @@ public interface BookDao {
 
     List<Book> getAllBooks();
 
+    void setBook(Book book);
 }

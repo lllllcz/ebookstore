@@ -15,6 +15,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping(value = "/signup")
+    public String signup(@RequestBody Map<String, String> params) {
+        String username = params.get("username");
+        String password = params.get("password");
+        return userService.signup(username, password);
+    }
+
     @PostMapping(value = "/login")
     public String login(@RequestBody Map<String, String> params){
         String username = params.get("username");

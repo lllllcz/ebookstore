@@ -23,4 +23,9 @@ public class BookDaoImpl implements BookDao {
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
+
+    @Override
+    public void setBook(Book book) {
+        bookRepository.save(book);
+    }
 }
