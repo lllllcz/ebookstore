@@ -10,4 +10,6 @@ public interface OrderService {
     String getUserCart(Integer userId);
 
     String getUserOrders(Integer userId);
+
+    String removeBookFromCart(Integer userId, Integer bookId);
 }

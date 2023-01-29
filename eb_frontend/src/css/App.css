@@ -1,3 +1,7 @@
+.App {
+    min-width: 1400px;
+}
+
 .l-content {
     padding: 0 150px;
 }
@@ -7,7 +11,8 @@
 }
 
 .l-content > div {
-    padding: 120px;
+    padding: 125px;
     min-height: 360px;
+    max-width: 1600px;
     background-color: white;
 }

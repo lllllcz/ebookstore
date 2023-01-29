@@ -149,4 +149,14 @@ public class OrderServiceImpl implements OrderService {
         return MessageUtil.message(1, "orders", JSON.toJSONString(orderList, SerializerFeature.DisableCircularReferenceDetect));
     }
 
+    @Override
+    public String removeBookFromCart(Integer userId, Integer bookId) {
+        CartItem item = orderDao.getUserCartBook(userId, bookId);
+        int num = item.getBookNum() - 1;
+        item.setBookNum(num);
+        orderDao.setCartItem(item);
+        String msg = "从购物车中移除一本《" + item.getBook().getBookName() + "》";
+        return MessageUtil.message(1, msg, null);
+    }
+
 }

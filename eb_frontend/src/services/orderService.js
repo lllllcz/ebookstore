@@ -28,3 +28,9 @@ export const  getUserOrders = (userId, callback) => {
   const url = backendURL + `/getUserOrders?userId=` + userId;
   getRequest(url, callback);
 }
+
+export const removeBookFromCart = (userId, bookId, callback) => {
+  const url = backendURL + `/removeBookFromCart`;
+  const data = {userId:userId, bookId:bookId};
+  postRequest(url, data, callback);
+};

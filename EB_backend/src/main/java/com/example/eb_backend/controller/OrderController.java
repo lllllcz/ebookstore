@@ -42,4 +42,12 @@ public class OrderController {
     public String getUserOrders(@RequestParam Integer userId) {
         return orderService.getUserOrders(userId);
     }
+
+    @PostMapping(value = "/removeBookFromCart")
+    public String removeBookFromCart(@RequestBody Map<String, Integer> params) {
+        Integer userId = params.get("userId");
+        Integer bookId = params.get("bookId");
+        return orderService.removeBookFromCart(userId, bookId);
+    }
+
 }

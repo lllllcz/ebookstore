@@ -114,8 +114,7 @@ class BookDetail extends React.Component {
               <Row id="part-1">
                 <Col span={12} style={{paddingRight:100}}>
                   <Image
-                    src="../../../../IdeaProjects/ebook_front/src/assets/1.jpg"
-                    // src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                     fallback={fallbackImage}
                   />
                 </Col>

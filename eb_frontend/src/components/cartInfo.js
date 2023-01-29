@@ -1,5 +1,5 @@
 import React from "react";
-import {Avatar, Button, List} from "antd";
+import {Avatar, Button, List, message} from "antd";
 import * as orderService from '../services/orderService'
 import {Link} from "react-router-dom";
 import priceFormat from "../utils/priceFormat";
@@ -87,6 +87,21 @@ class CartInfo extends React.Component {
               description={"￥ "+priceFormat(item.price)}
             />
             数量：{item.bookNum}
+            <br/><br/>
+            <Button
+              onClick={() => {
+                // eslint-disable-next-line
+                const user = eval('(' + localStorage.getItem("user") + ')');
+                const callback = (data) => {
+                  console.log(data);
+                  message.success(data.msg);
+                  window.location.reload();
+                }
+                orderService.removeBookFromCart(user.userId, item.bookId, callback);
+              }}
+            >
+              移除一本
+            </Button>
           </List.Item>
         )}
       />
