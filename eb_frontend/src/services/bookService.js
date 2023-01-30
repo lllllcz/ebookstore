@@ -10,3 +10,8 @@ export const getAllBooks = (callback) => {
   const url = backendURL + `/getAllBooks`;
   getRequest(url, callback);
 };
+
+export const searchBookName = (keyword, callback) => {
+  const url = backendURL + `/search/BookName?keyword=` + keyword;
+  getRequest(url, callback);
+}
