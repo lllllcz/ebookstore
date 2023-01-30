@@ -31,3 +31,9 @@
 关闭项目后停止 solr
 
     >.\service\solr-8.11.2\bin\solr.cmd stop -p 8983
+
+---
+
+## WebSocket
+
+后端可向前端推送消息。

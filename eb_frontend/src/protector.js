@@ -58,7 +58,6 @@ class Protector extends React.Component {
     );
     return(
       (this.state.isAuthed) ? (ele1) : (ele2)
-      // ele1
     );
   }
 

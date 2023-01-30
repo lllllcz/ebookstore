@@ -20,3 +20,8 @@ export const logout = (callback) => {
   const url = backendURL + `/logout`;
   getRequest(url, callback);
 };
+
+export const hello = (userId, callback) => {
+  const url = backendURL + `/hello?userId=` + userId;
+  getRequest(url, callback);
+}

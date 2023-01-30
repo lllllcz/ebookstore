@@ -61,6 +61,7 @@ function Toolbar() {
       label: (<Link to="/orders" style={linkStyle} ><WalletOutlined /> 我的订单</Link>)
     },
   ];
+  // eslint-disable-next-line
   const auth = eval('(' + localStorage.getItem("user") + ')');
   const items = (auth == null) ? (items1) : (items2);
 

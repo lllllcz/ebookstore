@@ -39,32 +39,21 @@ class Bookshelf extends React.Component {
     const filter = this.state.searchResult;
     let elements = [];
     if (books.length === 0) {
-      elements.push(
-        <Col><h2>No Data</h2></Col>
-      )
+      elements.push(<Col><h2>No Data</h2></Col>);
     }
     else if (filter.length === 0) {
-      let i = 0;
-      while (i < books.length) {
-        elements.push(<Col span={6}><BookCard book={books.at(i)} /></Col>)
-        i += 1;
+      for (let i = 0; i < books.length; i++) {
+        elements.push(<Col span={6}><BookCard book={books.at(i)} /></Col>);
       }
     }
     else {
-      let i = 0;
-      while (i < books.length) {
-        let j = 0;
-        let flag = false;
-        while (j < filter.length) {
+      for (let i = 0; i < books.length; i++) {
+        for (let j = 0; j < filter.length; j++) {
           if (filter.at(j) === (i+1).toString()) {
-            flag = true;
+            elements.push(<Col span={6}><BookCard book={books.at(i)} /></Col>);
+            break;
           }
-          j += 1;
         }
-        if (flag) {
-          elements.push(<Col span={6}><BookCard book={books.at(i)} /></Col>)
-        }
-        i += 1;
       }
     }
 
