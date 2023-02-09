@@ -1,0 +1,5 @@
+.\keytool.exe -genkey -alias tomcat -keyalg RSA -keystore "D:\codes\IdeaProjects\ebook_back\tomcat.keystore" -validity 365
+
+.\keytool.exe -importkeystore -srckeystore "D:\codes\IdeaProjects\ebook_back\tomcat.keystore" -destkeystore "D:\codes\IdeaProjects\ebook_back\tomcat.keystore" -deststoretype pkcs12
+
+.\keytool.exe -export -alias tomcat -keystore "D:\codes\IdeaProjects\ebook_back\tomcat.keystore" -file "D:\codes\IdeaProjects\ebook_back\tomcat.cer" -storepass 020523
